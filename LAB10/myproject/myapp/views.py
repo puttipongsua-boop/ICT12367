@@ -15,7 +15,8 @@ def form_view(request):
         fullname = request.POST.get('fullname', '')
         age = request.POST.get('age', '')
         if fullname and age:
-            return redirect('about')
+            Person.objects.create(name=fullname, age=int(age))
+            return redirect('index')
     return render(request, 'form.html')
 
 def contact(request):
